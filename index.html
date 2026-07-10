@@ -83,13 +83,26 @@
             text: "Some time passes, and your project has been accepted! You have 5 hours to spend! What should you buy...",
             options: [
                 { text: "That big blahaj looks cool!", next: "sharkEnd" },
-                { text: "I only did this for the Tung Tung Tung Sa-key.", next: "tungEnd1" }
+                { text: "I only did this for the Tung Tung Tung Sa-key.", next: "choice" }
             ]
         },
         sharkEnd: {
             text: "You exchange your 5 hours for the blahaj, and you are happy with your decision. However, in the back of your mind, you wonder if you made the right choice?",
             options: [
                 { text: "Play again", next: "asleep" }
+            ]
+        },
+        choice: {
+            text: "... Are you sure you want to do this?",
+            options: [
+                { text: "On second thought...", next: "freeEnd" },
+                { text: "Yes, I need it.", next: "tungEnd1" }
+            ]
+        },
+        freeEnd: {
+            text: "You resist temptation and choose to not buy the Tung Tung Tung Sa-key. Although initially hit with the pang of regret, you soon start to relish in your newfound sense of peace. You are free.",
+            options: [
+                { text: "Play again" next: "asleep" }
             ]
         },
         tungEnd1: {
@@ -237,11 +250,9 @@
                 if (char === "," || char === ";") {
                     delay = 0.3;
                 } else if (char === "." || char === "!" || char === "?") {
-                    const nextChar = fullText[currentProgress];
-                    if (nextChar !== "." && nextChar !== "!" && nextChar !== "?") {
-                        delay = 0.7;
-                    }
+                    delay = 0.7;
                 }
+            }
 
                 wait(delay, typeNextChar);
             } else {

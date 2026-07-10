@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onekey Text Adventure</title>
+    <script src="https://unpkg.com/kaplay@3001.0.12/dist/kaplay.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #1d1d1d; }
+    </style>
+</head>
+<body>
+<script>
+    kaplay({
+        background: [20, 20, 25],
+        width: 800,
+        height: 600,
+        letterbox: true,
+    });
+
+    const story = {
+        asleep: {
+            text: "You are fast asleep, dreaming of electric sheep. Suddenly, your alarm clock you made from BLARE rings.",
+            options: [
+                { text: "Rise and shine!", next: "awake" },
+                { text: "It's too early...", next: "sleepEnd" }
+            ]
+        },
+        sleepEnd: {
+            text: "You quickly drift back to sleep. This temporary joy made you miss the deadline for Onekey. You miss out on your Tung Tung Tung Sa-key and regret that moment for the rest of your life.",
+            options: [
+                { text: "Play again", next: "asleep" }
+            ]
+        },
+        awake: {
+            text: "Your eyes slowly open, adjusting to the bright morning light shining through your window. Your stomach rumbles loudly, however you need to get to work to finish your Onekey project, but you also see a beautiful green morning outside.",
+            options: [
+                { text: "I'm starving!", next: "kitchen" },
+                { text: "I need to finish my project.", next: "computer" },
+                { text: "I should touch grass.", next: "outside" }
+            ]
+        },
+        kitchen: {
+            text: "You open your fridge, only to see a single block of cheese.",
+            options: [
+                { text: "Guess I'll have cheese...", next: "cheeseEnd" }
+            ]
+        },
+        cheeseEnd: {
+            text: "This moment defined the start of your career as a cheese connoisseur, bringing you unimaginable opportunities, such as going to the moon (made of cheese) and being amongst the first to settle there, living the rest of your life on the lunar surface.",
+            options: [
+                { text: "Play again", next: "asleep" }
+            ]
+        },
+        computer: {
+            text: "You sit down at your computer and you realise you severely underestimated the time needed to finish your project. It looks impossible to finish.",
+            options: [
+                { text: "I'll just get AI to write my code!", next: "aiEnd" },
+                { text: "I'm feeling lazy, I'll just pretend to code to get more hours!", next: "fraudEnd" }, 
+                { text: "I can do it with the power of friendship! (and coffee)", next: "work" },
+                { text: "I'll just give up and play some games.", next: "games" }
+            ]
+        },
+        aiEnd: {
+            text: "You submit your AI generated work. All of a sudden, ChatGPT, Gemini, Claude, and countless other AIs jump out of your computer and knock you unconscious. The next thing you know you seem to be inside of a screen, answering different prompts from people all around the world...",
+            options: [
+                { text: "Play again", next: "asleep" }
+            ]
+        },
+        fraudEnd: {
+            text: "You submit your fraudulent work. The Fraud Squad quickly catches wind, and promptly rejects your admission. They were also so disappointed that they personally came to your house and threw you into jail, where you spent the rest of your life.",
+            options: [
+                { text: "Play again", next: "asleep" }
+            ]
+        },
+        work: {
+            text: "After countless hours of work, you manage to submit your project in time.",
+            options: [
+                { text: "I hope they like it...", next: "purchase" }
+            ]
+        },
+        purchase: {
+            text: "Some time passes, and your project has been accepted! You have 5 hours to spend! What should you buy...",
+            options: [
+                { text: "That big blahaj looks cool!", next: "sharkEnd" },
+                { text: "I only did this for the Tung Tung Tung Sa-key.", next: "tungEnd1" }
+            ]
+        },
+        sharkEnd: {
+            text: "You exchange your 5 hours for the blahaj, and you are happy with your decision. However, in the back of your mind, you wonder if you made the right choice?",
+            options: [
+                { text: "Play again", next: "asleep" }
+            ]
+        },
+        tungEnd1: {
+            text: "You race to buy the Tung Tung Tung Sa-key before it's sold out. You become attached to it... almost too attached. You bring it everywhere with you, to school, to work, even in the shower. You become... obsessed with it. You stop going outside. You stop talking to your friends and family; you only need Tung Tung.",
+            options: [
+                { text: "...", next: "tungEnd2" }
+            ]
+        },
+        tungEnd2: {
+            text: "Your life is now Tung Tung Tung Sa-His.",
+            options: [
+                { text: "Play again", next: "asleep" }
+            ]
+        },
+        games: {
+            text: "You start browsing the games you have installed, when something catches your eye...",
+            options: [
+                { text: "Rocket Rush! That seems interesting...", next: "RR" },
+                { text: "A Long Way Home! That's the game my friend recommended!", next: "ALWH" },
+                { text: "Speedy Pong! What a throwback!", next: "SP" },
+                { text: "Dragon Slayer! Where did I get this again?", next: "DS" }
+            ]
+        },
+        RR: {
+            text: "You boot up Rocket Rush, expecting to only play for a few minutes. You end up spending hours glued to your screen. You reach the moon countless times. You feel satisfied.",
+            options: [
+                { text: "...", next: "gameEnd" }
+            ]
+        },
+        ALWH: {
+            text: "You boot up A Long Way Home, expecting to only play for a few minutes. Who knew that a completely random game could be so much fun? You end up spending hours trying to find your way back home.",
+            options: [
+                { text: "...", next: "gameEnd" }
+            ]
+        },
+        SP: {
+            text: "You boot up Speedy Pong, expecting it to be just another Pong clone. You soon realise how wrong you were. As the ball got faster, so did your reaction time. You enter a state of focus where everything around you seems to slow down. After many hours, you finally win 10-0.",
+            options: [
+                { text: "...", next: "gameEnd" }
+            ]
+        },
+        DS: {
+            text: "You boot up Dragon Slayer, expecting to only play for a few minutes. Hours later, you finally slay the dragon and saved your village. You feel a sense of pride for your character; after all the trials and tribulations they have faced, they can finally return to their village with their head held high.",
+            options: [
+                { text: "...", next: "gameEnd" }
+            ]
+        },
+        gameEnd: {
+            text: "This experience has shown you just how captivating games can be, so you decide to become a game developer. Whether or not you'll be successful... Only time will tell.",
+            options: [
+                { text: "Play again", next: "asleep" }
+            ]
+        },
+        outside: {
+            text: "Just before you step onto the grass, you get a call from your friend asking if you want to go on a road trip.",
+            options: [
+                { text: "I need to touch grass.", next: "grassEnd" },
+                { text: "I love trips! Let's go!", next: "carEnd" }
+            ]
+        },
+        carEnd: {
+            text: "You take up your friend's offer. However, little did either of you know that you would never return to finish your Onekey project. So there it sat, forever unfinished.",
+            options: [
+                { text: "Play again", next: "asleep" }
+            ]
+        },
+        grassEnd: {
+            text: "As soon as you step on the grass, your hayfever attacks you like never before. This is the grass' revenge for always being stepped on. You vow to never go outside again for as long as you live, both for your protection and nature's peace.",
+            options: [
+                { text: "Play again", next: "asleep" }
+            ]
+        },
+    };
+
+    const COMIC_SANS = '"Comic Sans MS", "Comic Sans", "Chalkboard SE", sans-serif';
+
+    function addButton(txt, position, onClickAction) {
+        const button = add([
+            rect(440, 55, { radius: 10 }),
+            pos(position),
+            anchor("center"),
+            color(50, 50, 70),
+            area(), 
+        ]);
+
+        const buttonText = add([
+            text(txt, { 
+                size: 16, 
+                align: "center", 
+                width: 410,
+                font: COMIC_SANS
+            }),
+            pos(position),
+            anchor("center"),
+            color(255, 255, 255),
+        ]);
+
+        button.onHover(() => {
+            button.color = rgb(80, 80, 110);
+            setCursor("pointer");
+        });
+
+        button.onHoverEnd(() => {
+            button.color = rgb(50, 50, 70);
+            setCursor("default");
+        });
+
+        button.onClick(onClickAction);
+    }
+
+    scene("game", (sceneId) => {
+        const currentData = story[sceneId];
+
+        let textColor = rgb(230, 230, 250);
+        let textDelay = 0.035;
+        if (sceneId === "tungEnd2") {
+            textColor = rgb(255, 70, 70);
+            textDelay = 0.1;
+        }
+
+        const storyLabel = add([
+            text("", {
+                size: 24,
+                width: 700,
+                align: "center",
+                font: COMIC_SANS,
+                lineSpacing: 12
+            }),
+            pos(width() / 2, 160),
+            anchor("center"),
+            color(textColor)
+        ]);
+
+        const fullText = currentData.text;
+        let currentProgress = 0;
+
+        function typeNextChar() {
+            if (currentProgress < fullText.length) {
+                const char = fullText[currentProgress];
+                currentProgress++;
+                storyLabel.text = fullText.slice(0, currentProgress);
+
+                let delay = textDelay;
+
+                if (char === "," || char === ";") {
+                    delay = 0.3;
+                } else if (char === "." || char === "!" || char === "?") {
+                    const nextChar = fullText[currentProgress];
+                    if (nextChar !== "." && nextChar !== "!" && nextChar !== "?") {
+                        delay = 0.7;
+                    }
+                }
+
+                wait(delay, typeNextChar);
+            } else {
+                showChoices();
+            }
+        }
+
+        function showChoices() {
+            currentData.options.forEach((option, index) => {
+                const yOffset = 360 + (index * 65); 
+                
+                addButton(option.text, vec2(width() / 2, yOffset), () => {
+                    setCursor("default"); 
+                    go("game", option.next); 
+                });
+            });
+        }
+        typeNextChar();
+    });
+
+    scene("start", () => {
+        const titleString = "ONEKEY TEXT ADVENTURE";
+        const letterWidth = 35;
+        const startX = (width() - (titleString.length * letterWidth)) / 2 + (letterWidth / 2);
+        const centerY = 180;
+        const letterObjects = [];
+
+        for (let i = 0; i < titleString.length; i++) {
+            const char = titleString[i];
+
+            const letterObj = add([
+                text(char, {
+                    size: 40,
+                    font: COMIC_SANS,
+                }),
+                pos(startX + (i * letterWidth), centerY),
+                anchor("center"),
+                color(255, 215, 0),
+                scale(1)
+            ]);
+            letterObjects.push(letterObj);
+        }
+        let totalTime = 0;
+        onUpdate(() => {
+            totalTime += dt() * 6;
+            letterObjects.forEach((letter, index) => {
+                const waveOffset = totalTime - (index * 0.4);
+                const waveScale = 1 + Math.max(0, Math.sin(waveOffset)) * 0.4;
+                letter.scale = vec2(waveScale);
+            });
+    });
+
+        addButton("PLAY GAME", vec2(width() / 2, 380), () => {
+            setCursor("default");
+            go("game", "asleep");
+        });
+    });   
+
+    go("start");
+</script>
+</body>
+</html>

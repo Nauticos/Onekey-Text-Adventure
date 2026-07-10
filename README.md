@@ -12,7 +12,7 @@ https://nauticos.github.io/Onekey-Text-Adventure/
 
 * Simple controls (use your mouse to click on the response you want)
 * Branching storyline - your decisions matter
-* 9 unique endings - Can you get them all?
+* 10 unique endings - Can you get them all?
 
 </br>
 

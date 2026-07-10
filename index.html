@@ -117,7 +117,7 @@
         freeEnd: {
             text: "You resist temptation and choose to not buy anything. As look at your Onekey dashboard one last time, you are hit with a pang of regret, but you soon start to relish in your newfound sense of peace. You are free.",
             options: [
-                { text: "Play again" next: "asleep" }
+                { text: "Play again", next: "asleep" }
             ]
         },
         tungEnd1: {
@@ -233,6 +233,8 @@
 
         let textColor = rgb(230, 230, 250);
         let textDelay = 0.035;
+        let textYPosition = 160;
+
         if (sceneId === "tungEnd2") {
             textColor = rgb(255, 70, 70);
             textDelay = 0.1;
@@ -246,7 +248,7 @@
                 font: COMIC_SANS,
                 lineSpacing: 12
             }),
-            pos(width() / 2, 160),
+            pos(width() / 2, textYPosition),
             anchor("center"),
             color(textColor)
         ]);
@@ -267,8 +269,7 @@
                 } else if (char === "." || char === "!" || char === "?") {
                     delay = 0.7;
                 }
-            }
-
+                
                 wait(delay, typeNextChar);
             } else {
                 showChoices();
@@ -290,7 +291,7 @@
 
     scene("start", () => {
         const titleString = "ONEKEY TEXT ADVENTURE";
-        const letterWidth = 35;
+        const letterWidth = 32; // Optimized padding width structure
         const startX = (width() - (titleString.length * letterWidth)) / 2 + (letterWidth / 2);
         const centerY = 180;
         const letterObjects = [];
@@ -310,6 +311,7 @@
             ]);
             letterObjects.push(letterObj);
         }
+
         let totalTime = 0;
         onUpdate(() => {
             totalTime += dt() * 6;
@@ -318,7 +320,7 @@
                 const waveScale = 1 + Math.max(0, Math.sin(waveOffset)) * 0.4;
                 letter.scale = vec2(waveScale);
             });
-    });
+        });
 
         addButton("PLAY GAME", vec2(width() / 2, 380), () => {
             setCursor("default");

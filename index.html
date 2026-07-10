@@ -233,8 +233,7 @@
 
         let textColor = rgb(230, 230, 250);
         let textDelay = 0.035;
-        let textYPosition = 160;
-
+        
         if (sceneId === "tungEnd2") {
             textColor = rgb(255, 70, 70);
             textDelay = 0.1;
@@ -248,7 +247,7 @@
                 font: COMIC_SANS,
                 lineSpacing: 12
             }),
-            pos(width() / 2, textYPosition),
+            pos(width() / 2, 160),
             anchor("center"),
             color(textColor)
         ]);
@@ -269,7 +268,7 @@
                 } else if (char === "." || char === "!" || char === "?") {
                     delay = 0.7;
                 }
-                
+
                 wait(delay, typeNextChar);
             } else {
                 showChoices();
@@ -291,7 +290,7 @@
 
     scene("start", () => {
         const titleString = "ONEKEY TEXT ADVENTURE";
-        const letterWidth = 32; // Optimized padding width structure
+        const letterWidth = 35;
         const startX = (width() - (titleString.length * letterWidth)) / 2 + (letterWidth / 2);
         const centerY = 180;
         const letterObjects = [];
@@ -311,7 +310,6 @@
             ]);
             letterObjects.push(letterObj);
         }
-
         let totalTime = 0;
         onUpdate(() => {
             totalTime += dt() * 6;

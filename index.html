@@ -76,14 +76,22 @@
         work: {
             text: "After countless hours of work, you manage to submit your project in time.",
             options: [
-                { text: "I hope they like it...", next: "purchase" }
+                { text: "I hope they like it...", next: "purchase1" }
             ]
         },
-        purchase: {
+        purchase1: {
             text: "Some time passes, and your project has been accepted! You have 5 hours to spend! What should you buy...",
             options: [
-                { text: "That big blahaj looks cool!", next: "sharkEnd" },
-                { text: "I only did this for the Tung Tung Tung Sa-key.", next: "choice" }
+                { text: "That big blahaj looks cool!", next: "choice1" },
+                { text: "I only did this for the Tung Tung Tung Sa-key.", next: "choice2" }
+            ]
+        },
+        purchase2: {
+            text: "Some time passes, and your project has been accepted! You have 5 hours to spend! What should you buy...",
+            options: [
+                { text: "That big blahaj looks cool!", next: "choice1" },
+                { text: "I only did this for the Tung Tung Tung Sa-key.", next: "choice2" },
+                { text: "I don't actually want to buy anything...", next: "freeEnd" }
             ]
         },
         sharkEnd: {
@@ -92,15 +100,22 @@
                 { text: "Play again", next: "asleep" }
             ]
         },
-        choice: {
+        choice1: {
             text: "... Are you sure you want to do this?",
             options: [
-                { text: "On second thought...", next: "freeEnd" },
+                { text: "On second thought...", next: "purchase2" },
+                { text: "Yes, I need it.", next: "sharkEnd" }
+            ]
+        },
+        choice2: {
+            text: "... Are you sure you want to do this?",
+            options: [
+                { text: "On second thought...", next: "purchase2" },
                 { text: "Yes, I need it.", next: "tungEnd1" }
             ]
         },
         freeEnd: {
-            text: "You resist temptation and choose to not buy the Tung Tung Tung Sa-key. Although initially hit with the pang of regret, you soon start to relish in your newfound sense of peace. You are free.",
+            text: "You resist temptation and choose to not buy anything. As look at your Onekey dashboard one last time, you are hit with a pang of regret, but you soon start to relish in your newfound sense of peace. You are free.",
             options: [
                 { text: "Play again" next: "asleep" }
             ]
